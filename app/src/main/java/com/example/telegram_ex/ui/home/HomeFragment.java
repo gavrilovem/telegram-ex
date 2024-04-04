@@ -26,6 +26,20 @@ public class HomeFragment extends Fragment {
 
         final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
+        binding.testButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        binding.textHome.setText("Нажато)");
+                    }
+                };
+                Thread thread = new Thread(runnable);
+                thread.start();
+            }
+        });
         return root;
     }
 

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1098811834862",
+    "project_id": "tgex-70244",
+    "storage_bucket": "tgex-70244.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098811834862:android:399793e2704812113bceff",
+        "android_client_info": {
+          "package_name": "com.example.telegram_ex"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWq1y_1suLjX6IhwchZ5x_6uVFLMnFjyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
