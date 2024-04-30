@@ -25,6 +25,7 @@ import com.example.telegram_ex.activities.LoginActivity;
 import com.example.telegram_ex.MainActivity;
 import com.example.telegram_ex.R;
 import com.example.telegram_ex.activities.RegistrationActivity;
+import com.example.telegram_ex.db.Dialog;
 import com.example.telegram_ex.db.FirebaseHelper;
 import com.example.telegram_ex.db.FirebaseValues;
 import com.example.telegram_ex.db.User;
@@ -34,13 +35,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
 public class LoginFragment extends Fragment {
 
     private LoginViewModel mViewModel;
-    private FirebaseAuth mAuth;
     final static String TAG = "LOGIN_STATE";
     ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -68,12 +69,10 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mAuth = FirebaseAuth.getInstance();
         mViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         view.findViewById(R.id.button_continue).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("WORKS", "IT IS WORKING Continue");
                 EditText email = view.findViewById(R.id.field_email);
                 EditText password = view.findViewById(R.id.field_password);
                 loginUser(email.getText().toString(), password.getText().toString());
@@ -87,24 +86,15 @@ public class LoginFragment extends Fragment {
         });
     }
     public void loginUser(String email, String password) {
-        mAuth.signInWithEmailAndPassword(email, password)
+        FirebaseHelper.AUTH.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(requireActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
-                            FirebaseHelper.getInstance().REF_DATABASE_ROOT.child(FirebaseValues.getInstance().NODE_USERS).child(Objects.requireNonNull(FirebaseHelper.getInstance().AUTH.getUid())).get()
-                                .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<DataSnapshot> task) {
-                                        if (task.isSuccessful()) {
-                                            Toast.makeText(getContext(), "Welcome, " + ((HashMap<String, Object>)task.getResult().getValue()).get("name"), // TODO instantiate user hashmap somewhere
-                                                    Toast.LENGTH_SHORT).show();
-                                            gotoMain();
-                                        }
-                                    }
-                                });
+                            FirebaseHelper.initUser();
+                            gotoMain();
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -115,7 +105,6 @@ public class LoginFragment extends Fragment {
                 });
     }
     public void register(View view) {
-        Log.i("WORKS", "IT IS WORKING GotoSignup");
         Intent intent = new Intent(this.getContext(), RegistrationActivity.class);
         activityResultLaunch.launch(intent);
     }

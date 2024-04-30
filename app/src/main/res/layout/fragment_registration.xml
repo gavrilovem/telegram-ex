@@ -2,57 +2,106 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Registration"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.registration.RegistrationFragment">
 
-    <EditText
-        android:id="@+id/field_email"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:autofillHints="password"
-        android:hint="@string/prompt_email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintTop_toTopOf="parent"/>
-    <EditText
-        android:id="@+id/field_login"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:autofillHints="password"
-        android:hint="@string/prompt_name"
-        android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@id/field_email"/>
-    <EditText
-        android:id="@+id/field_name"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:autofillHints="password"
-        android:hint="@string/prompt_login"
-        android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@id/field_login"/>
-    <EditText
-        android:id="@+id/field_password"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:autofillHints="password"
-        android:hint="@string/prompt_password"
-        android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/field_name"/>
-    <EditText
-        android:id="@+id/field_password_verify"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:autofillHints="password"
-        android:hint="@string/prompt_password_verify"
-        android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/field_password"/>
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="32dp"
+        android:layout_height="27dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="64dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/field_password"
+        app:layout_constraintStart_toStartOf="@id/field_password"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
+
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="216dp"
+        android:layout_height="54dp"
+        android:fontFamily="@font/andika"
+        android:text="@string/welcome"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_register"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="64dp"
         android:text="@string/action_sign_up_short"
-        app:layout_constraintTop_toBottomOf="@id/field_password_verify"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/field_password_verify"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <EditText
+        android:id="@+id/field_login"
+        android:layout_width="252dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="96dp"
+        android:ems="10"
+        android:hint="@string/prompt_login"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/field_name"
+        android:layout_width="252dp"
+        android:layout_height="49dp"
+        android:ems="10"
+        android:hint="@string/prompt_name"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/field_login" />
+
+    <EditText
+        android:id="@+id/field_email"
+        android:layout_width="252dp"
+        android:layout_height="49dp"
+        android:ems="10"
+        android:hint="@string/prompt_email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/field_name" />
+
+    <EditText
+        android:id="@+id/field_password"
+        android:layout_width="252dp"
+        android:layout_height="49dp"
+        android:ems="10"
+        android:hint="@string/prompt_password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/field_email" />
+
+    <EditText
+        android:id="@+id/field_password_verify"
+        android:layout_width="252dp"
+        android:layout_height="49dp"
+        android:ems="10"
+        android:hint="@string/prompt_password_verify"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/field_password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

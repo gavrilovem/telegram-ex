@@ -15,11 +15,24 @@
         android:id="@+id/nav_settings"
         android:name="com.example.telegram_ex.ui.settings.SettingsFragment"
         android:label="@string/menu_settings"
-        tools:layout="@layout/fragment_settings"/>
-    <activity
-        android:id="@+id/nav_login"
-        android:name="com.example.telegram_ex.activities.LoginActivity"
-        android:label="@string/menu_login"
-        tools:layout="@layout/activity_login"/>
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_nav_settings_to_settings_change_name"
+            app:destination="@id/settings_change_name"/>
+        <action
+            android:id="@+id/action_nav_settings_to_settings_change_login"
+            app:destination="@id/settings_change_login"/>
+    </fragment>
 
+    <fragment
+        android:id="@+id/settings_change_name"
+        android:name="com.example.telegram_ex.ui.settings.ChangeNameFragment"
+        android:label="@string/menu_settings_change_name"
+        tools:layout="@layout/fragment_change_name"/>
+
+    <fragment
+        android:id="@+id/settings_change_login"
+        android:name="com.example.telegram_ex.ui.settings.ChangeLoginFragment"
+        android:label="@string/menu_settings_change_login"
+        tools:layout="@layout/fragment_change_login"/>
 </navigation>

@@ -1,19 +1,16 @@
 package com.example.telegram_ex.db;
 
 public final class FirebaseValues {
-    public final String NODE_USERS = "users";
-    public final String USERS_ID = "uid";
-    public final String USERS_LOGIN = "login";
-    public final String USERS_EMAIL = "email";
-    public final String USERS_NAME = "name";
-
-    private FirebaseValues(){}
-
-    private static FirebaseValues instance;
-    public static synchronized FirebaseValues getInstance() {
-        if (instance == null) {
-            instance = new FirebaseValues();
-        }
-        return instance;
-    }
+    public static final String NODE_DIALOGS = "dialogs";
+    public static final String DIALOGS_ID = "uid";
+    public static final String NODE_USERS = "users";
+    public static final String USERS_ID = "uid";
+    public static final String USERS_LOGIN = "login";
+    public static final String USERS_EMAIL = "email";
+    public static final String USERS_NAME = "name";
+    public static final String USERS_STATUS = "status";
+    public static final String NODE_MESSAGES = "messages";
+    public static final String MESSAGES_TEXT = "text";
+    public static final String MESSAGES_FROM = "from";
+    public static final String MESSAGES_TIMESTAMP = "timestamp";
 }

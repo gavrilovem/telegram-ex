@@ -18,6 +18,7 @@ import com.example.telegram_ex.activities.RegistrationActivity;
 import com.example.telegram_ex.db.FirebaseHelper;
 import com.example.telegram_ex.db.FirebaseValues;
 import com.example.telegram_ex.db.User;
+import com.example.telegram_ex.utils.AppStates;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -27,8 +28,6 @@ import java.util.Objects;
 
 public class RegistrationFragment extends Fragment {
     private RegistrationViewModel mViewModel;
-    private FirebaseHelper fbHelp;
-    private FirebaseValues fbVal;
     private EditText email;
     private EditText name;
     private EditText login;
@@ -43,8 +42,6 @@ public class RegistrationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         mViewModel = new ViewModelProvider(this).get(RegistrationViewModel.class);
-        fbHelp = FirebaseHelper.getInstance();
-        fbVal = FirebaseValues.getInstance();
         return inflater.inflate(R.layout.fragment_registration, container, false);
     }
     @Override
@@ -71,16 +68,16 @@ public class RegistrationFragment extends Fragment {
         if (!_password.equals(_password_v)) {
             Toast.makeText(this.requireActivity().getBaseContext(), "Passwords must be equal", Toast.LENGTH_SHORT).show(); // TODO string value
         }
-        FirebaseHelper.getInstance().AUTH.createUserWithEmailAndPassword(_email, _password)
+        FirebaseHelper.AUTH.createUserWithEmailAndPassword(_email, _password)
             .addOnCompleteListener(this.requireActivity(), new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "createUserWithEmail:success");
-                        String uid = Objects.requireNonNull(FirebaseHelper.getInstance().AUTH.getCurrentUser()).getUid();
-                        User user = new User(uid, email.getText().toString(), login.getText().toString(), name.getText().toString());
-                        fbHelp.REF_DATABASE_ROOT.child(fbVal.NODE_USERS).child(uid).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        String uid = Objects.requireNonNull(FirebaseHelper.AUTH.getCurrentUser()).getUid();
+                        User user = new User(uid, email.getText().toString(), login.getText().toString(), name.getText().toString(), AppStates.ONLINE.toString());
+                        FirebaseHelper.REF_DATABASE_ROOT.child(FirebaseValues.NODE_USERS).child(uid).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) ((RegistrationActivity)requireActivity()).completeTask(_email, _password);
