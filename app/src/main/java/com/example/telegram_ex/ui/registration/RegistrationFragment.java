@@ -17,13 +17,12 @@ import com.example.telegram_ex.R;
 import com.example.telegram_ex.activities.RegistrationActivity;
 import com.example.telegram_ex.db.FirebaseHelper;
 import com.example.telegram_ex.db.FirebaseValues;
-import com.example.telegram_ex.db.User;
+import com.example.telegram_ex.models.User;
 import com.example.telegram_ex.utils.AppStates;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
-import java.util.HashMap;
 import java.util.Objects;
 
 public class RegistrationFragment extends Fragment {
@@ -67,6 +66,11 @@ public class RegistrationFragment extends Fragment {
         String _password_v = password_v.getText().toString();
         if (!_password.equals(_password_v)) {
             Toast.makeText(this.requireActivity().getBaseContext(), "Passwords must be equal", Toast.LENGTH_SHORT).show(); // TODO string value
+            return;
+        }
+        if (login.getText().toString().length() < FirebaseValues.MIN_CHARS_LOGIN) {
+            Toast.makeText(this.requireActivity().getBaseContext(), "Login must be at least " + FirebaseValues.MIN_CHARS_LOGIN + " long", Toast.LENGTH_SHORT).show();
+            return;
         }
         FirebaseHelper.AUTH.createUserWithEmailAndPassword(_email, _password)
             .addOnCompleteListener(this.requireActivity(), new OnCompleteListener<AuthResult>() {

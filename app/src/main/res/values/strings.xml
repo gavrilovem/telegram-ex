@@ -48,4 +48,8 @@
     <string name="settings_hint_input_username">Введите новое имя</string>
     <string name="change_login_success">Логин успешно изменен</string>
     <string name="change_name_success">Имя успешно изменено</string>
+    <string name="new_dialog_input_hint">Search</string>
+    <string name="user_already_exists">Такой пользователь уже существует</string>
+    <string name="new_dialog_label">Создать диалог</string>
+    <string name="home_fab_description">Новый диалог</string>
 </resources>

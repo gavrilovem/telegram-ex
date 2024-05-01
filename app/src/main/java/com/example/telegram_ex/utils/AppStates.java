@@ -5,8 +5,7 @@ import com.example.telegram_ex.db.FirebaseValues;
 
 public enum AppStates {
     ONLINE("в сети"),
-    OFFLINE("был недавно"),
-    TYPING("печатает");
+    OFFLINE("не в сети");
 
     String state;
 

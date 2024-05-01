@@ -1,15 +1,8 @@
 package com.example.telegram_ex.db;
 
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-
-import com.example.telegram_ex.R;
-import com.example.telegram_ex.activities.LoginActivity;
-import com.google.android.gms.tasks.OnCanceledListener;
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.example.telegram_ex.models.Dialog;
+import com.example.telegram_ex.models.User;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
@@ -17,7 +10,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 
 import java.util.HashMap;
-import java.util.Objects;
 
 public final class FirebaseHelper {
     public static final FirebaseAuth AUTH = FirebaseAuth.getInstance();
@@ -55,5 +47,12 @@ public final class FirebaseHelper {
         dialogMap.put(refDialogReceivingUser + "/" + messageKey, messageMap);
 
         FirebaseHelper.REF_DATABASE_ROOT.updateChildren(dialogMap);
+    }
+
+    public static void createDialog(String uid1, String uid2) {
+        FirebaseHelper.REF_DATABASE_ROOT.child(FirebaseValues.NODE_DIALOGS)
+                .child(uid1).child(uid2).setValue(new Dialog(uid2));
+        FirebaseHelper.REF_DATABASE_ROOT.child(FirebaseValues.NODE_DIALOGS)
+                .child(uid2).child(uid1).setValue(new Dialog(uid1));
     }
 }

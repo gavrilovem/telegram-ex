@@ -1,4 +1,4 @@
-package com.example.telegram_ex.db;
+package com.example.telegram_ex.models;
 
 import java.io.Serializable;
 

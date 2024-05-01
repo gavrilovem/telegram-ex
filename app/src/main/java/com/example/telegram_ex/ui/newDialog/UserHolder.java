@@ -1,24 +1,23 @@
-package com.example.telegram_ex.ui.home;
+package com.example.telegram_ex.ui.newDialog;
 
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.telegram_ex.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-class DialogHolder extends RecyclerView.ViewHolder {
+public class UserHolder extends RecyclerView.ViewHolder {
     private TextView name;
     private TextView status;
     private CircleImageView photo;
-    public DialogHolder(@NonNull View itemView) {
+    public UserHolder(View itemView) {
         super(itemView);
-        this.name = itemView.findViewById(R.id.dialog_item_name);
-        this.status = itemView.findViewById(R.id.dialog_item_status);
+        this.name = itemView.findViewById(R.id.user_item_name);
+        this.status = itemView.findViewById(R.id.user_item_status);
         this.photo = new CircleImageView(itemView.getContext());
         this.photo.setImageDrawable(itemView.getResources().getDrawable(R.drawable.default_photo));
     }

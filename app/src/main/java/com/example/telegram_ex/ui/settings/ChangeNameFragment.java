@@ -44,7 +44,6 @@ public class ChangeNameFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_change_name, container, false);
-//        FragmentChangeNameBinding binding = FragmentChangeNameBinding.inflate(inflater, container, false);
         input = v.findViewById(R.id.settings_input_name);
         submit = v.findViewById(R.id.settings_btn_name);
 

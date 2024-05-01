@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.telegram_ex.R;
-import com.example.telegram_ex.db.User;
+import com.example.telegram_ex.models.User;
 import com.example.telegram_ex.ui.dialog.DialogFragment;
 import com.example.telegram_ex.databinding.ActivityDialogBinding;
 

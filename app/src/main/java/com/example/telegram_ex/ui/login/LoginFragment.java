@@ -25,19 +25,10 @@ import com.example.telegram_ex.activities.LoginActivity;
 import com.example.telegram_ex.MainActivity;
 import com.example.telegram_ex.R;
 import com.example.telegram_ex.activities.RegistrationActivity;
-import com.example.telegram_ex.db.Dialog;
 import com.example.telegram_ex.db.FirebaseHelper;
-import com.example.telegram_ex.db.FirebaseValues;
-import com.example.telegram_ex.db.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Objects;
 
 public class LoginFragment extends Fragment {
 

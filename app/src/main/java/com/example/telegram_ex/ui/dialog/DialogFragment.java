@@ -1,7 +1,6 @@
 package com.example.telegram_ex.ui.dialog;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.telegram_ex.MainActivity;
 import com.example.telegram_ex.R;
-import com.example.telegram_ex.activities.DialogActivity;
 import com.example.telegram_ex.db.FirebaseHelper;
 import com.example.telegram_ex.db.FirebaseValues;
-import com.example.telegram_ex.db.Message;
-import com.example.telegram_ex.db.User;
+import com.example.telegram_ex.models.Message;
+import com.example.telegram_ex.models.User;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
@@ -90,6 +88,7 @@ public class DialogFragment extends Fragment {
                 String message = inputMessage.getText().toString();
                 if (!message.equals("")) {
                     FirebaseHelper.sendMessage(message, user);
+                    FirebaseHelper.createDialog(FirebaseHelper.USER.uid, user.uid);
                     inputMessage.setText("");
                 }
             }
@@ -113,8 +112,6 @@ public class DialogFragment extends Fragment {
         };
         mUserRef = FirebaseHelper.REF_DATABASE_ROOT.child(FirebaseValues.NODE_USERS).child(user.uid);
         mUserRef.addValueEventListener(mListenerInfoToolbar);
-//        mToolbarInfo.setVisibility(View.VISIBLE);
-//        fab.setVisibility(View.INVISIBLE);
     }
 
     private void initRecyclerView() {
