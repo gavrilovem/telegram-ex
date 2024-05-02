@@ -1,6 +1,5 @@
 package com.example.telegram_ex.ui.newDialog;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,11 +16,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.telegram_ex.R;
-import com.example.telegram_ex.activities.DialogActivity;
 import com.example.telegram_ex.db.FirebaseHelper;
 import com.example.telegram_ex.db.FirebaseValues;
 import com.example.telegram_ex.models.User;
-import com.example.telegram_ex.ui.home.HomeFragmentDirections;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.Query;

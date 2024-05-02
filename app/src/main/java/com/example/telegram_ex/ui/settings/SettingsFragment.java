@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -34,8 +35,22 @@ public class SettingsFragment extends Fragment {
         binding = FragmentSettingsBinding.inflate(inflater, container, false);
 
         View root = binding.getRoot();
-        binding.settingsFullName.setText(FirebaseHelper.USER.name);
-        binding.settingsStatus.setText(FirebaseHelper.USER.status);
+
+        if (FirebaseHelper.AUTH.getCurrentUser() != null) {
+            FirebaseHelper.REF_DATABASE_ROOT.child(FirebaseValues.NODE_USERS)
+                    .child(Objects.requireNonNull(FirebaseHelper.AUTH.getUid())).get()
+                    .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DataSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                // TODO instantiate user hashmap somewhere
+                                User user = task.getResult().getValue(User.class);
+                                binding.settingsFullName.setText(user.name);
+                                binding.settingsStatus.setText(user.status);
+                            }
+                        }
+                    });
+        }
 
         binding.settingsBtnChangeName.setOnClickListener(v ->
                 Navigation.findNavController(root).navigate(R.id.action_nav_settings_to_settings_change_name)

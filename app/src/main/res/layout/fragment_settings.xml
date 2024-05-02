@@ -154,16 +154,4 @@
             app:layout_constraintTop_toBottomOf="@id/settings_label_log_out" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/settings_change_photo"
-        android:layout_width="@dimen/settings_user_photo_width"
-        android:layout_height="@dimen/settings_user_photo_height"
-        android:src="@drawable/ic_menu_camera"
-        android:layout_marginEnd="@dimen/app_margin"
-        app:civ_border_color="@color/grey"
-        app:civ_circle_background_color="@color/accent"
-        app:layout_constraintBottom_toBottomOf="@+id/settings_header_bloc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settings_header_bloc" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
