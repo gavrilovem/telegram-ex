@@ -19,9 +19,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (FirebaseHelper.getInstance().AUTH.getCurrentUser() == null) {
+        if (FirebaseHelper.AUTH.getCurrentUser() == null) {
             setContentView(R.layout.activity_login);
-        } else finish(); // TODO users listing
+        } else finish();
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()

@@ -9,17 +9,71 @@
         android:id="@+id/nav_home"
         android:name="com.example.telegram_ex.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_new_dialog"
+            app:destination="@id/nav_new_dialog" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_dialog"
+            app:destination="@id/nav_dialog" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_dialog"
+        android:name="com.example.telegram_ex.ui.dialog.DialogFragment"
+        tools:layout="@layout/fragment_dialog" >
+        <action
+            android:id="@+id/action_nav_dialog_to_nav_home"
+            app:destination="@id/nav_home" />
+        <argument
+            android:name="user"
+            app:argType="com.example.telegram_ex.models.User" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_settings"
         android:name="com.example.telegram_ex.ui.settings.SettingsFragment"
         android:label="@string/menu_settings"
-        tools:layout="@layout/fragment_settings"/>
-    <activity
-        android:id="@+id/nav_login"
-        android:name="com.example.telegram_ex.activities.LoginActivity"
-        android:label="@string/menu_login"
-        tools:layout="@layout/activity_login"/>
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_nav_settings_to_settings_change_login"
+            app:destination="@id/settings_change_login" />
+        <action
+            android:id="@+id/action_nav_settings_to_settings_change_name"
+            app:destination="@id/settings_change_name" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settings_change_name"
+        android:name="com.example.telegram_ex.ui.settings.ChangeNameFragment"
+        android:label="@string/menu_settings_change_name"
+        tools:layout="@layout/fragment_change_name">
+        <action
+            android:id="@+id/action_settings_change_name_to_nav_settings"
+            app:destination="@id/nav_settings" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settings_change_login"
+        android:name="com.example.telegram_ex.ui.settings.ChangeLoginFragment"
+        android:label="@string/menu_settings_change_login"
+        tools:layout="@layout/fragment_change_login">
+        <action
+            android:id="@+id/action_settings_change_login_to_nav_settings"
+            app:destination="@id/nav_settings" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_new_dialog"
+        android:name="com.example.telegram_ex.ui.newDialog.NewDialogFragment"
+        android:label="@string/new_dialog_label"
+        tools:layout="@layout/fragment_new_dialog" >
+        <action
+            android:id="@+id/action_nav_new_dialog_to_nav_home"
+            app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_nav_new_dialog_to_nav_dialog"
+            app:destination="@id/nav_dialog" />
+    </fragment>
 
 </navigation>
