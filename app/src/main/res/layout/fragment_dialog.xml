@@ -7,35 +7,39 @@
     android:layout_height="match_parent"
     tools:context=".ui.dialog.DialogFragment">
 
+
     <include
         android:id="@+id/toolbar"
-        android:layout_height="wrap_content"
+        layout="@layout/toolbar_info"
         android:layout_width="match_parent"
-        layout="@layout/toolbar_info" />
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chat_recycle_view"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintEnd_toEndOf="@id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/chat_input_message"
-        android:background="@color/blue_wish"
-        tools:listitem="@layout/message_item"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"/>
-
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/chat_input_message"
+        app:layout_constraintEnd_toEndOf="@id/toolbar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/message_item" />
 
     <EditText
         android:id="@+id/chat_input_message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:height="@dimen/dialog_input_height"
         android:background="@android:color/transparent"
+        android:hint="@string/prompt_input_message"
         android:paddingLeft="@dimen/app_padding"
         android:paddingRight="@dimen/app_padding"
-        android:hint="@string/prompt_input_message"
-        android:height="@dimen/dialog_input_height"
-        android:textColor="@color/black"
+        android:textColor="@color/alternativemain"
         android:textColorHint="@color/grey"
         app:layout_constraintBottom_toBottomOf="@id/chat_recycle_view"
         app:layout_constraintEnd_toStartOf="@+id/imageButton"
@@ -49,7 +53,7 @@
         android:src="@drawable/ic_send"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/chat_input_message"/>
+        app:layout_constraintTop_toTopOf="@+id/chat_input_message" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

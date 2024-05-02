@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="@dimen/app_padding"
-    android:background="@color/primary"
-    android:layout_height="?attr/actionBarSize">
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/alternativemain2"
+    android:padding="@dimen/app_padding">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="@dimen/toolbar_image_width"
         android:id="@+id/toolbar_image"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="@dimen/toolbar_image_width"
+        android:layout_height="@dimen/toolbar_image_height"
         android:src="@drawable/default_photo"
         app:civ_circle_background_color="@color/white"
-        android:layout_height="@dimen/toolbar_image_height"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/toolbar_contact_name"
         style="@style/normal_text"
-        tools:text="name"
-        android:textColor="@color/white"
+        android:textColor="@color/alternativemain"
         app:layout_constraintStart_toEndOf="@id/toolbar_image"
-        app:layout_constraintTop_toTopOf="@id/toolbar_image"/>
+        app:layout_constraintTop_toTopOf="@id/toolbar_image"
+        tools:text="name" />
 
     <TextView
         android:id="@+id/toolbar_contact_status"
         style="@style/small_text"
-        tools:text="status"
-        android:textColor="@color/accent_dark"
+        android:textColor="@color/loyalternativemain"
         app:layout_constraintStart_toEndOf="@id/toolbar_image"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_contact_name"/>
+        app:layout_constraintTop_toBottomOf="@id/toolbar_contact_name"
+        tools:text="status" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

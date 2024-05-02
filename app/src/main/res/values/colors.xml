@@ -18,4 +18,9 @@
     <color name="black_overlay">#66000000</color>
     <color name="accent_dark">#D1CDCD</color>
     <color name="accent">#FFFFFF</color>
+    <color name="maincolor">#8805A8</color>
+    <color name="alternativemain">#D9005B</color>
+    <color name="loyalternativemain">#EC6AA1</color>
+    <color name="alternativemain2">#4711AE</color>
+    <color name="lightpink">#FC61E2</color>
 </resources>

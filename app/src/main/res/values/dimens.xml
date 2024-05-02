@@ -14,6 +14,7 @@
     <dimen name="app_margin">16dp</dimen>
     <dimen name="normal_text">16sp</dimen>
     <dimen name="small_text">14sp</dimen>
+    <dimen name="NiceBatton">10</dimen>
 
 
     <dimen name="settings_user_photo_width">55dp</dimen>

@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorOnPrimary"
     tools:context=".ui.home.HomeFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dialogs_recycle_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintCircleRadius="0dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintCircleRadius="0dp" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -20,9 +21,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
+        android:background="@color/loyalternativemain"
         android:contentDescription="@string/home_fab_description"
-        app:srcCompat="@android:drawable/ic_dialog_email"
+        app:backgroundTint="@color/loyalternativemain"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_dialog_email" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

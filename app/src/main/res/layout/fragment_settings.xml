@@ -2,16 +2,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/settings_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/settings_layout"
+    android:background="?attr/colorOnPrimary"
     tools:context=".ui.settings.SettingsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/settings_header_bloc"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@color/primary"
+        android:background="@color/alternativemain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -33,24 +34,24 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/app_margin"
             android:layout_marginTop="@dimen/app_small_margin"
-            tools:text="@string/settings_default_username"
             android:textColor="@color/accent"
             android:textSize="@dimen/normal_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/settings_user_photo"
-            app:layout_constraintTop_toTopOf="@id/settings_user_photo" />
+            app:layout_constraintTop_toTopOf="@id/settings_user_photo"
+            tools:text="@string/settings_default_username" />
 
         <TextView
             android:id="@+id/settings_status"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/app_margin"
-            tools:text="@string/settings_default_status"
             android:textColor="@color/accent"
             android:textSize="@dimen/small_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/settings_user_photo"
-            app:layout_constraintTop_toBottomOf="@id/settings_full_name" />
+            app:layout_constraintTop_toBottomOf="@id/settings_full_name"
+            tools:text="@string/settings_default_status" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -58,19 +59,20 @@
         android:id="@+id/settings_text_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/app_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="@string/settings_text_account"
-        android:textColor="@color/primary"
+        android:textColor="@color/alternativemain"
         android:textSize="@dimen/small_text"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/settings_header_bloc" />
+        app:layout_constraintTop_toBottomOf="@id/settings_header_bloc"
+        tools:layout_editor_absoluteX="16dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/settings_btn_change_name"
         style="@style/settings_buttons"
-        android:paddingTop="@dimen/activity_vertical_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="?attr/colorOnPrimary"
+        android:paddingTop="@dimen/activity_vertical_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/settings_text_account">
@@ -78,14 +80,16 @@
         <TextView
             android:id="@+id/settings_bio"
             style="@style/normal_text"
-            tools:text="@string/settings_label_name"
+            android:textColor="@color/alternativemain"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/settings_btn_change_name" />
+            app:layout_constraintTop_toTopOf="@id/settings_btn_change_name"
+            tools:text="@string/settings_label_name" />
 
         <TextView
             android:id="@+id/settings_label_bio"
             style="@style/small_text"
             android:text="@string/settings_menu_change_name"
+            android:textColor="@color/loyalternativemain"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/settings_bio" />
 
@@ -99,6 +103,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/settings_btn_change_login"
         style="@style/settings_buttons"
+        android:background="?attr/colorOnPrimary"
         android:paddingTop="@dimen/activity_vertical_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,14 +112,16 @@
         <TextView
             android:id="@+id/settings_username"
             style="@style/normal_text"
-            tools:text="@string/settings_label_login"
+            android:textColor="@color/alternativemain"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/settings_btn_change_login" />
+            app:layout_constraintTop_toTopOf="@id/settings_btn_change_login"
+            tools:text="@string/settings_label_login" />
 
         <TextView
             android:id="@+id/settings_label_username"
             style="@style/small_text"
             android:text="@string/settings_menu_change_login"
+            android:textColor="@color/loyalternativemain"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/settings_username" />
 
@@ -128,6 +135,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/settings_btn_log_out"
         style="@style/settings_buttons"
+        android:background="?attr/colorOnPrimary"
         android:paddingTop="@dimen/activity_vertical_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -136,14 +144,16 @@
         <TextView
             android:id="@+id/settings_log_out"
             style="@style/normal_text"
-            tools:text="@string/settings_logout"
+            android:textColor="@color/alternativemain"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/settings_btn_log_out" />
+            app:layout_constraintTop_toTopOf="@id/settings_btn_log_out"
+            tools:text="@string/settings_logout" />
 
         <TextView
             android:id="@+id/settings_label_log_out"
             style="@style/small_text"
             android:text="@string/settings_label_logout"
+            android:textColor="@color/loyalternativemain"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/settings_log_out" />
 

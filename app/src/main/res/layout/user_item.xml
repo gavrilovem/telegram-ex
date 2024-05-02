@@ -18,15 +18,17 @@
     <TextView
         android:id="@+id/user_item_name"
         style="@style/normal_text"
-        tools:text="name"
+        android:textColor="@color/alternativemain"
         app:layout_constraintStart_toEndOf="@id/user_item_photo"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="name" />
 
     <TextView
         android:id="@+id/user_item_status"
         style="@style/small_text"
-        tools:text="status"
+        android:textColor="@color/loyalternativemain"
         app:layout_constraintStart_toEndOf="@id/user_item_photo"
-        app:layout_constraintTop_toBottomOf="@id/user_item_name"/>
+        app:layout_constraintTop_toBottomOf="@id/user_item_name"
+        tools:text="status" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
