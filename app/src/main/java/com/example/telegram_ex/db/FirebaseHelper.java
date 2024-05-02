@@ -14,18 +14,13 @@ import java.util.HashMap;
 public final class FirebaseHelper {
     public static final FirebaseAuth AUTH = FirebaseAuth.getInstance();
     public static final DatabaseReference REF_DATABASE_ROOT = FirebaseDatabase.getInstance("https://tgex-70244-default-rtdb.europe-west1.firebasedatabase.app/").getReference();
-    public static User USER = null;
+    public static User USER = new User();
 
     public static void initUser() {
         if (FirebaseHelper.AUTH.getCurrentUser() != null)
             FirebaseHelper.REF_DATABASE_ROOT.child(FirebaseValues.NODE_USERS)
                     .child(FirebaseHelper.AUTH.getUid()).get()
-                    .addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
-                        @Override
-                        public void onSuccess(DataSnapshot dataSnapshot) {
-                            FirebaseHelper.setUSER(dataSnapshot.getValue(User.class));
-                        }
-                    });
+                    .addOnSuccessListener(dataSnapshot -> FirebaseHelper.setUSER(dataSnapshot.getValue(User.class)));
     }
 
     public static void setUSER(User USER) {

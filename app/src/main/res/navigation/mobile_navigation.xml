@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.telegram_ex.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_nav_home_to_new_dialog"
@@ -21,6 +21,7 @@
     <fragment
         android:id="@+id/nav_dialog"
         android:name="com.example.telegram_ex.ui.dialog.DialogFragment"
+        android:label="@string/dialog_header_label"
         tools:layout="@layout/fragment_dialog" >
         <action
             android:id="@+id/action_nav_dialog_to_nav_home"

@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.telegram_ex.R;
-import com.example.telegram_ex.activities.DialogActivity;
 import com.example.telegram_ex.models.Dialog;
 import com.example.telegram_ex.db.FirebaseHelper;
 import com.example.telegram_ex.db.FirebaseValues;
@@ -109,12 +108,6 @@ public class HomeFragment extends Fragment {
         fab.setOnClickListener(v -> {
             Navigation.findNavController(v).navigate(R.id.action_nav_home_to_new_dialog);
         });
-    }
-
-    private void openDialog(User user) {
-        Intent intent = new Intent(this.requireActivity(), DialogActivity.class);
-        intent.putExtra("user", user);
-        startActivity(intent);
     }
 
     @Override

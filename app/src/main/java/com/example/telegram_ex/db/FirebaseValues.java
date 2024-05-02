@@ -14,5 +14,4 @@ public final class FirebaseValues {
     public static final String MESSAGES_FROM = "from";
     public static final String MESSAGES_TIMESTAMP = "timestamp";
     public static final int MIN_CHARS_LOGIN = 6;
-    public static final int MIN_CHARS_PASSWORD = 6;
 }

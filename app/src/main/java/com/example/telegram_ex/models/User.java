@@ -1,13 +1,15 @@
 package com.example.telegram_ex.models;
 
+import com.example.telegram_ex.utils.AppStates;
+
 import java.io.Serializable;
 
 public class User implements Serializable {
-    public String uid;
-    public String email;
-    public String login;
-    public String name;
-    public String status;
+    public String uid = "default_uid";
+    public String email = "default.email@example.com";
+    public String login = "default_login";
+    public String name = "default_name";
+    public String status = AppStates.ONLINE.toString();
 
     public User() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)

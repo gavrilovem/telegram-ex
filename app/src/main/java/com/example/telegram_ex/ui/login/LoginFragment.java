@@ -36,16 +36,12 @@ public class LoginFragment extends Fragment {
     final static String TAG = "LOGIN_STATE";
     ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == Activity.RESULT_OK) {
-                        Intent data = result.getData();
-                        String email = data.getStringExtra(LoginActivity.ACCESS_EMAIL);
-                        String password = data.getStringExtra(LoginActivity.ACCESS_PASSWORD);
-                        loginUser(email, password);
-
-                    }
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+                    String email = data.getStringExtra(LoginActivity.ACCESS_EMAIL);
+                    String password = data.getStringExtra(LoginActivity.ACCESS_PASSWORD);
+                    loginUser(email, password);
                 }
             });
     public static LoginFragment newInstance() {
@@ -61,37 +57,26 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
-        view.findViewById(R.id.button_continue).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText email = view.findViewById(R.id.field_email);
-                EditText password = view.findViewById(R.id.field_password);
-                loginUser(email.getText().toString(), password.getText().toString());
-            }
+        view.findViewById(R.id.button_continue).setOnClickListener(v -> {
+            EditText email = view.findViewById(R.id.field_email);
+            EditText password = view.findViewById(R.id.field_password);
+            loginUser(email.getText().toString(), password.getText().toString());
         });
-        view.findViewById(R.id.button_goto_signup).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                register(v);
-            }
-        });
+        view.findViewById(R.id.button_goto_signup).setOnClickListener(v -> register(v));
     }
     public void loginUser(String email, String password) {
         FirebaseHelper.AUTH.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(requireActivity(), new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithEmail:success");
-                            FirebaseHelper.initUser();
-                            gotoMain();
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(getContext(), "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
+                .addOnCompleteListener(requireActivity(), task -> {
+                    if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "signInWithEmail:success");
+                        FirebaseHelper.initUser();
+                        gotoMain();
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "signInWithEmail:failure", task.getException());
+                        Toast.makeText(getContext(), "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
     }
