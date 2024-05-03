@@ -21,6 +21,8 @@ import com.example.telegram_ex.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 
@@ -38,16 +40,19 @@ public class SettingsFragment extends Fragment {
 
         if (FirebaseHelper.AUTH.getCurrentUser() != null) {
             FirebaseHelper.REF_DATABASE_ROOT.child(FirebaseValues.NODE_USERS)
-                    .child(Objects.requireNonNull(FirebaseHelper.AUTH.getUid())).get()
-                    .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    .child(Objects.requireNonNull(FirebaseHelper.AUTH.getUid()))
+                    .addValueEventListener(new ValueEventListener() {
                         @Override
-                        public void onComplete(@NonNull Task<DataSnapshot> task) {
-                            if (task.isSuccessful()) {
-                                // TODO instantiate user hashmap somewhere
-                                User user = task.getResult().getValue(User.class);
-                                binding.settingsFullName.setText(user.name);
-                                binding.settingsStatus.setText(user.status);
-                            }
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            // TODO instantiate user hashmap somewhere
+                            User user = snapshot.getValue(User.class);
+                            binding.settingsFullName.setText(user.name);
+                            binding.settingsStatus.setText(user.status);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
                         }
                     });
         }

@@ -24,6 +24,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 
@@ -70,18 +72,19 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         if (FirebaseHelper.AUTH.getCurrentUser() != null) {
             FirebaseHelper.REF_DATABASE_ROOT.child(FirebaseValues.NODE_USERS)
-                .child(Objects.requireNonNull(FirebaseHelper.AUTH.getUid())).get()
-                .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DataSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            // TODO instantiate user hashmap somewhere
-                            User user = task.getResult().getValue(User.class);
+                .child(Objects.requireNonNull(FirebaseHelper.AUTH.getUid())).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            User user = snapshot.getValue(User.class);
                             ((TextView) findViewById(R.id.user_name)).setText(user.name);
                             ((TextView) findViewById(R.id.user_credentials)).setText(user.email);
                         }
-                    }
-                });
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
         }
     }
 
